@@ -1,0 +1,35 @@
+{
+  "label": {
+    "dayOfWeek": "Day of the week",
+    "opens": "Opens at",
+    "closes": "Closes at",
+    "selectDay": "Select a day",
+    "selectOpenTime": "Select opening time",
+    "selectCloseTime": "Select closing time"
+  },
+  "days": {
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday",
+    "Saturday": "Saturday",
+    "Sunday": "Sunday"
+  },
+  "tooltip": {
+    "dayOfWeek": "Choose the day this schedule applies to.",
+    "opens": "Select the time the store opens.",
+    "closes": "Select the time the store closes."
+  },
+  "placeholder": {
+    "opens": "e.g. 09:00",
+    "closes": "e.g. 18:00"
+  },
+  "validation": {
+    "required": "This field is required.",
+    "invalidTime": "Closing time must be later than opening time."
+  },
+  "message": {
+    "default": "Please fill in all fields for this time entry."
+  }
+}

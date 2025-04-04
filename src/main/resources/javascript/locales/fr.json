@@ -1,0 +1,35 @@
+{
+  "label": {
+    "dayOfWeek": "Jour de la semaine",
+    "opens": "Heure d'ouverture",
+    "closes": "Heure de fermeture",
+    "selectDay": "Sélectionner un jour",
+    "selectOpenTime": "Sélectionner l'heure d'ouverture",
+    "selectCloseTime": "Sélectionner l'heure de fermeture"
+  },
+  "days": {
+    "Monday": "Lundi",
+    "Tuesday": "Mardi",
+    "Wednesday": "Mercredi",
+    "Thursday": "Jeudi",
+    "Friday": "Vendredi",
+    "Saturday": "Samedi",
+    "Sunday": "Dimanche"
+  },
+  "tooltip": {
+    "dayOfWeek": "Choisissez le jour auquel cet horaire s'applique.",
+    "opens": "Sélectionnez l'heure à laquelle le magasin ouvre.",
+    "closes": "Sélectionnez l'heure à laquelle le magasin ferme."
+  },
+  "placeholder": {
+    "opens": "ex. 09:00",
+    "closes": "ex. 18:00"
+  },
+  "validation": {
+    "required": "Ce champ est requis.",
+    "invalidTime": "L'heure de fermeture doit être postérieure à l'heure d'ouverture."
+  },
+  "message": {
+    "default": "Veuillez remplir tous les champs pour cette entrée horaire."
+  }
+}

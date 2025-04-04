@@ -1,0 +1,37 @@
+{
+  "name": "slocnt:store",
+  "description": "",
+  "dynamic": false,
+  "fields": [
+    {
+      "name": "priceRange",
+      "selectorType": "Choicelist",
+      "valueConstraints": [
+        {
+          "value": { "type": "String", "value": "$" },
+          "displayValue": "$ - Budget friendly"
+        },
+        {
+          "value": { "type": "String", "value": "$$" },
+          "displayValue": "$$ - Moderate"
+        },
+        {
+          "value": { "type": "String", "value": "$$$" },
+          "displayValue": "$$$ - Premium"
+        },
+        {
+          "value": { "type": "String", "value": "$$$$" },
+          "displayValue": "$$$$ - Luxury"
+        },
+        {
+          "value": { "type": "String", "value": "$$$$$" },
+          "displayValue": "$$$$$ - Exclusive"
+        }
+      ]
+    },
+    {
+      "name": "openingHours",
+      "selectorType": "OpeningHoursJson"
+    }
+  ]
+}
