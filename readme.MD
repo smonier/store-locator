@@ -3,61 +3,90 @@
 
 The **Jahia Store Locator** module provides a fully configurable and translatable content structure for managing physical store locations with geolocation, address, opening hours, and search capability.
 
+The webapp is developed in Type Script and embedded in a Jahia OSGI module.
+
+The webapp is available here : https://github.com/smonier/store-locator-webapp
+
 ## ✨ Features
 
 - Custom content types for stores (`slocnt:store`)
 - Mixins for address and geo-location (`slocmix:address`, `slocmix:geo`)
 - Multi-language support
-- Structured content for opening hours
+- Content override for opening hours, custom react selector type
 - Support for amenity listing, image, contact, and web links
 - Ready for GraphQL querying
 - Includes UI field labels and tooltips in English and French
-
-## 📦 Content Types
-
-- **`slocnt:store`**: Main content type for a store location
-
-## 🧩 Mixins
-
-- **`slocmix:storeLocator`**: Tags the content as a store for locator usage
-- **`slocmix:address`**: Common address fields (street, city, postal code, etc.)
-- **`slocmix:geo`**: Latitude and longitude support
-
-## 🔤 Translations
-
-UI labels are provided in:
-- English (`messages.properties`)
-- French (`messages_fr.properties`)
 
 ## ⚙️ Usage
 
 1. Deploy the module in your Jahia environment
 2. Add `slocnt:store` content types to your content tree
-3. Use GraphQL or REST APIs to fetch and display store data
-4. Optionally connect with a React/Vite frontend or embedded iframe
+3. Add `slocnt:storeLocatorApp` to one of your page
 
-## 📂 Files Included
+## Screenshot
 
-- `definitions.cnd`: JCR node type definitions
-- `messages.properties`: English labels
-- `messages_fr.properties`: French labels
-- `store-locator.json`: Example structured store content
-- `graphql/queries`: GraphQL examples for querying stores
+![picture](./src/main/resources/images/storeLocator.png)
+
 
 ## 🗺️ Example GraphQL Query
 
 ```graphql
-query GetStores($language: String!) {
-  jcr {
-    nodesByCriteria(criteria: {nodeType: "slocnt:store"}) {
-      nodes {
-        uuid
-        displayName(language: $language)
-        name: property(name: "name", language: $language) { value }
-        ...
-      }
+query GetStores($workspace: Workspace!, $language: String!, $path: String!) {
+    jcr(workspace: $workspace) {
+        nodesByCriteria(criteria: {nodeType: "slocnt:store", paths: [$path]}) {
+            nodes {
+                uuid
+                displayName(language: $language)
+                name: property(name: "name", language: $language) {
+                    value
+                }
+                description: property(name: "description", language: $language) {
+                    value
+                }
+                image: property(name: "image") {
+                    node: refNode {
+                        url
+                    }
+                }
+                telephone: property(name: "telephone", language: $language) {
+                    value
+                }
+                priceRange: property(name: "priceRange", language: $language) {
+                    value
+                }
+                amenityFeature: property(name: "amenityFeature", language: $language) {
+                    values
+                }
+                openingHours: property(name: "openingHours", language: $language) {
+                    values
+                }
+                latitude: property(name: "latitude", language: $language) {
+                    value
+                }
+                longitude: property(name: "longitude", language: $language) {
+                    value
+                }
+                streetAddress: property(name: "streetAddress", language: $language) {
+                    value
+                }
+                addressLocality: property(name: "addressLocality", language: $language) {
+                    value
+                }
+                addressRegion: property(name: "addressRegion", language: $language) {
+                    value
+                }
+                postalCode: property(name: "postalCode", language: $language) {
+                    value
+                }
+                addressCountry: property(name: "addressCountry", language: $language) {
+                    value
+                }
+                url: property(name: "url", language: $language) {
+                    value
+                }
+            }
+        }
     }
-  }
 }
 ```
 
