@@ -3,7 +3,7 @@
 
 The **Jahia Store Locator** module provides a fully configurable and translatable content structure for managing physical store locations with geolocation, address, opening hours, and search capability.
 
-The webapp is developed in Type Script and embedded in a Jahia OSGI module.
+The webapp is developed in Type Script and embedded in a Jahia OSGI module using openStreetMap/Leaflet.
 
 The webapp is available here : https://github.com/smonier/store-locator-webapp
 
