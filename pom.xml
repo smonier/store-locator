@@ -62,8 +62,9 @@
     <description>This is the custom module (Store Locator) for running on a Jahia server.</description>
 
     <scm>
-        <connection>scm:dummy:uri</connection>
-        <developerConnection>scm:dummy:uri</developerConnection>
+        <connection>scm:git:git@github.com:smonier/store-locator.git</connection>
+        <developerConnection>scm:git:git@github.com:smonier/store-locator.git</developerConnection>
+        <url>https://github.com/smonier/store-locator.git</url>
     </scm>
 
     <properties>
