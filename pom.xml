@@ -95,10 +95,32 @@
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
-                        <_dsannotations>org.jahia.se.modules.quiz.*</_dsannotations>
+                        <_dsannotations>org.jahia.se.modules.storelocator.*</_dsannotations>
                         <Jahia-Static-Resources>/css,/fonts,/javascript,/icons</Jahia-Static-Resources>
                     </instructions>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <pushChanges>true</pushChanges>
+                    <goals>clean verify</goals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jahia.server</groupId>
+                <artifactId>jahia-maven-plugin</artifactId>
+                <version>6.10</version>
             </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
