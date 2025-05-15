@@ -37,48 +37,75 @@
 <c:set var="addressCountry" value="${currentNode.properties['addressCountry'].string}"/>
 
 
+
 <div class="card mb-4 shadow-sm">
-	<c:if test="${not empty image}">
-		<img src="${image.url}" class="card-img-top" alt="${name}" style="object-fit: cover; height: 200px;">
-	</c:if>
-
-	<div class="card-body">
-		<h5 class="card-title">${name}</h5>
-
-		<c:if test="${not empty description}">
-			<p class="card-text text-muted">${description}</p>
-		</c:if>
-
-		<ul class="list-unstyled mb-3">
-			<li><strong><fmt:message key="slocmix_address"/></strong> ${streetAddress}, ${postalCode} ${addressLocality}, ${addressRegion} (${addressCountry})</li>
-			<li><strong><fmt:message key="slocnt_store.telephone"/></strong> ${telephone}</li>
-			<li><strong><fmt:message key="slocnt_store.priceRange"/></strong> ${priceRange}</li>
-		</ul>
-
-		<c:if test="${not empty amenityFeature}">
-			<div class="mb-2">
-				<strong><fmt:message key="slocnt_store.amenityFeature"/> :</strong>
-				<c:forEach items="${amenityFeature}" var="item">
-					<span class="badge bg-secondary me-1">${item.string}</span>
-				</c:forEach>
+	<div class="row g-0">
+		<c:if test="${not empty image}">
+			<div class="col-md-4">
+				<img src="<c:url value='${image.url}'/>" class="img-fluid rounded-start h-100 object-fit-cover" alt="${name}" />
 			</div>
 		</c:if>
+		<div class="col-md-8">
+			<div class="card-body">
+				<h5 class="card-title fw-bold">${name}</h5>
+				<p class="card-text text-muted">${description}</p>
 
-		<c:if test="${not empty openingHours}">
-			<div class="mb-3">
-				<strong><fmt:message key="slocnt_store.openingHours"/> :</strong>
-				<ul class="mb-0 ps-3" id="opening-hours-list-${currentNode.identifier}">
-				<c:forEach items="${openingHours}" var="item" varStatus="loop">
-					<li>${item}</li>
-				</c:forEach>
-					</ul>
+				<div class="mb-2">
+					<i class="fas fa-map-marker-alt text-primary"></i>
+					${streetAddress}, ${addressLocality}, ${addressRegion} ${postalCode}, ${addressCountry}<br/>
+					<a class="small" href="https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}" target="_blank">
+						<fmt:message key="store.directions" />
+					</a>
+				</div>
+
+				<c:if test="${not empty telephone}">
+					<div class="mb-2">
+						<i class="fas fa-phone text-primary"></i>
+						<a href="tel:${telephone}" class="text-decoration-none">${telephone}</a>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty url}">
+					<div class="mb-2">
+						<i class="fas fa-globe text-primary"></i>
+						<a href="${url}" class="text-decoration-none" target="_blank">${url}</a>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty priceRange}">
+					<div class="mb-2">
+						<i class="fas fa-tags text-primary"></i> ${priceRange}
+					</div>
+				</c:if>
+
+				<c:if test="${not empty amenityFeature}">
+					<div class="mb-2">
+						<h6><fmt:message key="store.amenityFeature" /></h6>
+
+						<i class="fas fa-concierge-bell text-primary"></i>
+						<c:forEach var="amenity" items="${amenityFeature}">
+							<span class="badge bg-light text-dark border me-1">${amenity.string}</span>
+						</c:forEach>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty openingHours}">
+				    <div class="mt-3">
+				        <h6><fmt:message key="store.openingHours" /></h6>
+				        <ul class="list-unstyled small">
+				            <c:forEach var="hour" items="${openingHours}">
+				                <c:set var="entry" value="${hour.string}" />
+				                <c:if test="${fn:contains(entry, 'dayOfWeek') and fn:contains(entry, 'opens') and fn:contains(entry, 'closes')}">
+				                    <c:set var="day" value="${fn:substringBefore(fn:substringAfter(entry, 'dayOfWeek\\\": \\\"'), '\"')}" />
+				                    <c:set var="opens" value="${fn:substringBefore(fn:substringAfter(entry, 'opens\\\": \\\"'), '\"')}" />
+				                    <c:set var="closes" value="${fn:substringBefore(fn:substringAfter(entry, 'closes\\\": \\\"'), '\"')}" />
+				                    <li><fmt:message key="store.day.${fn:toLowerCase(day)}" /> : ${opens} - ${closes}</li>
+				                </c:if>
+				            </c:forEach>
+				        </ul>
+				    </div>
+				</c:if>
 			</div>
-		</c:if>
-
-		<div class="d-flex justify-content-between align-items-center">
-			<a href="${url}" target="_blank" class="btn btn-outline-primary">Visiter le site</a>
-			<br/>
-			<small class="text-muted">${latitude}, ${longitude}</small>
 		</div>
 	</div>
 </div>

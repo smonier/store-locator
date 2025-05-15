@@ -5,7 +5,7 @@
 
 [slocmix:storeLocator] > jmix:droppableContent, jmix:editorialContent mixin
 
-[slocnt:storeLocatorApp] > jmix:droppableContent, jmix:editorialContent, slocmix:storeLocator
+[slocnt:storeLocatorApp] > jnt:content, jmix:droppableContent, jmix:editorialContent, mix:title, slocmix:storeLocator
 
 // Mixin for address info
 [slocmix:address] mixin

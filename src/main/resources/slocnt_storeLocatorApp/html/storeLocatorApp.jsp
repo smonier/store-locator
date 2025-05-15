@@ -36,7 +36,7 @@
 <script>
     const storeLocatorApp_context_${targetId} = {
         host: "${host}",
-        workspace: "${workspace eq 'default' ? 'EDIT' : workspace}",
+        workspace: "${workspace eq 'default' ? 'EDIT' : (workspace eq 'live' ? 'LIVE' : workspace)}",
         isEdit:${isEdit},
         scope: "${site}",//site key
         locale: "${language}",
