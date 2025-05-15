@@ -54,7 +54,7 @@
     <groupId>org.jahia.se.modules</groupId>
     <artifactId>store-locator</artifactId>
     <name>Store Locator</name>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <packaging>bundle</packaging>
     <description>This is the custom module (Store Locator) for running on a Jahia server.</description>
 
@@ -62,7 +62,7 @@
         <connection>scm:git:git@github.com:smonier/store-locator.git</connection>
         <developerConnection>scm:git:git@github.com:smonier/store-locator.git</developerConnection>
         <url>https://github.com/smonier/store-locator.git</url>
-      <tag>HEAD</tag>
+      <tag>store-locator-1.0.3</tag>
   </scm>
 
     <properties>
