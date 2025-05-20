@@ -6,6 +6,8 @@
 [slocmix:storeLocator] > jmix:droppableContent, jmix:editorialContent mixin
 
 [slocnt:storeLocatorApp] > jnt:content, jmix:droppableContent, jmix:editorialContent, mix:title, slocmix:storeLocator
+ - welcomeTitle (string) internationalized
+ - welcomeMessage (string) internationalized
 
 // Mixin for address info
 [slocmix:address] mixin
