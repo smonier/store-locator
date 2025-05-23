@@ -1,6 +1,6 @@
 # default configuration - won't be overridden
 
-game4Quiz:
+storeLocator:
   description: "Store Locator"
   auto_apply:
     - origin: hosted

@@ -21,36 +21,36 @@
 	{
       "@context": "https://schema.org",
       "@type": "Store",
-      "name": "${fn:escapeXml(name)}",
-  "description": "${fn:escapeXml(description)}",
-	<c:if test="${not empty image}">
-		"image": "<c:url value='${image.url}'/>",
+      "name": "${currentResource.moduleParams.name}",
+  "description": "${currentResource.moduleParams.description}",
+	<c:if test="${not empty currentResource.moduleParams.image}">
+		"image": "${currentResource.moduleParams.image}",
 	</c:if>
-  <c:if test="${not empty url}">
-	"url": "${fn:escapeXml(url)}",
+  <c:if test="${not empty currentResource.moduleParams.url}">
+	"url": "${currentResource.moduleParams.url}",
 </c:if>
-  <c:if test="${not empty telephone}">
-	"telephone": "${telephone}",
+  <c:if test="${not empty currentResource.moduleParams.telephone}">
+	"telephone": "${currentResource.moduleParams.telephone}",
 </c:if>
 	"address": {
       "@type": "PostalAddress",
-      "streetAddress": "${streetAddress}",
-    "addressLocality": "${addressLocality}",
-    "addressRegion": "${addressRegion}",
-    "postalCode": "${postalCode}",
-    "addressCountry": "${addressCountry}"
+      "streetAddress": "${currentResource.moduleParams.streetAddress}",
+    "addressLocality": "${currentResource.moduleParams.addressLocality}",
+    "addressRegion": "${currentResource.moduleParams.addressRegion}",
+    "postalCode": "${currentResource.moduleParams.postalCode}",
+    "addressCountry": "${currentResource.moduleParams.addressCountry}"
   },
-	<c:if test="${not empty latitude and not empty longitude}">
+	<c:if test="${not empty currentResource.moduleParams.latitude and not empty currentResource.moduleParams.longitude}">
 		"geo": {
 		"@type": "GeoCoordinates",
-		"latitude": ${latitude},
-		"longitude": ${longitude}
+		"latitude": ${currentResource.moduleParams.latitude},
+		"longitude": ${currentResource.moduleParams.longitude}
 		},
 	</c:if>
-  <c:if test="${not empty openingHours}">
+  <c:if test="${not empty currentResource.moduleParams.openingHours}">
 	"openingHoursSpecification": [
-	<c:forEach var="hour" items="${openingHours}" varStatus="loop">
-		<c:set var="entry" value="${hour.string}" />
+	<c:forEach var="hour" items="${currentResource.moduleParams.openingHours}" varStatus="loop">
+		<c:set var="entry" value="${hour}" />
 		<c:if test="${fn:contains(entry, 'dayOfWeek') and fn:contains(entry, 'opens') and fn:contains(entry, 'closes')}">
 			{
 			"@type": "OpeningHoursSpecification",
@@ -62,16 +62,16 @@
 	</c:forEach>
 	],
 </c:if>
-  <c:if test="${not empty amenityFeature}">
+  <c:if test="${not empty currentResource.moduleParams.amenityFeature}">
 	"additionalProperty": [
-	<c:forEach var="amenity" items="${amenityFeature}" varStatus="loop">
+	<c:forEach var="amenity" items="${currentResource.moduleParams.amenityFeature}" varStatus="loop">
 		{
 		"@type": "PropertyValue",
-		"name": "${fn:escapeXml(amenity.string)}"
+		"name": "${amenity}"
 		}<c:if test="${!loop.last}">,</c:if>
 	</c:forEach>
 	],
 </c:if>
-	"priceRange": "${priceRange}"
+	"priceRange": "${currentResource.moduleParams.priceRange}"
 }
 </script>

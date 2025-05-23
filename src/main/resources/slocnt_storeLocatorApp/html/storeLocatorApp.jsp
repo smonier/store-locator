@@ -68,5 +68,5 @@
 <div
         id="${targetId}"
         class="react-store-locator-container"
-        style="width: 100%; max-height: 800px; overflow: auto; box-sizing: border-box;"
+        style="width: 100%; overflow: auto; box-sizing: border-box;"
 ></div>
